@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fundo com Formas Estilosas</title>
+<style>
+  /* Container do fundo */
+  body, html {
+    margin: 0; padding: 0;
+    height: 100%;
+    background: #121212;
+    overflow: hidden;
+    font-family: sans-serif;
+  }
+
+  .background {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  /* Forma base */
+  .shape {
+    position: absolute;
+    opacity: 0.15;
+    filter: drop-shadow(0 0 8px rgba(255 255 255 / 0.2));
+    animation: pulse 8s ease-in-out infinite;
+    transition: transform 0.3s ease;
+  }
+
+  /* Círculo com gradiente radial */
+  .circle {
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle, #4da6ff 60%, transparent 100%);
+    border-radius: 50%;
+  }
+
+  /* Quadrado com gradiente */
+  .square {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, #ff6a6a, #ffac6a);
+    opacity: 0.1;
+  }
+
+  /* Triângulo usando bordas */
+  .triangle {
+    width: 0;
+    height: 0;
+    border-left: 70px solid transparent;
+    border-right: 70px solid transparent;
+    border-bottom: 120px solid #a66aff;
+    opacity: 0.12;
+  }
+
+  /* Blob com clip-path */
+  .blob {
+    width: 160px;
+    height: 160px;
+    background: linear-gradient(135deg, #66ffcc, #33cc99);
+    clip-path: polygon(
+      45% 5%, 65% 15%, 85% 40%, 75% 75%, 50% 90%, 20% 70%, 15% 40%, 25% 10%
+    );
+    filter: drop-shadow(0 0 6px #33cc9944);
+    opacity: 0.14;
+  }
+
+  /* Posicionamento das formas */
+  .shape:nth-child(1) {
+    top: 12%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+  .shape:nth-child(2) {
+    top: 50%;
+    left: 80%;
+    transform: rotate(25deg);
+    animation-delay: 2s;
+  }
+  .shape:nth-child(3) {
+    top: 70%;
+    left: 40%;
+    transform: rotate(-18deg);
+    animation-delay: 4s;
+  }
+  .shape:nth-child(4) {
+    top: 30%;
+    left: 55%;
+    animation-delay: 6s;
+  }
+  .shape:nth-child(5) {
+    top: 80%;
+    left: 15%;
+    transform: rotate(40deg);
+    opacity: 0.1;
+    animation-delay: 1s;
+  }
+
+  /* Animação de pulsar e leve movimento */
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1) translateY(0);
+      opacity: 0.15;
+    }
+    50% {
+      transform: scale(1.1) translateY(-10px);
+      opacity: 0.25;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="background">
+    <div class="shape circle"></div>
+    <div class="shape triangle"></div>
+    <div class="shape square"></div>
+    <div class="shape blob"></div>
+    <div class="shape circle"></div>
+  </div>
+</body>
+</html>

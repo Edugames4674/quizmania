@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jogo de Perguntas e Respostas</title>
+  <link rel="stylesheet" href="jogo.css" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon (1).ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+  <div class="background-decor">
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+</div>
+<div class="background-icons">
+  <div class="icon" style="left: 10%; animation-delay: 0s;">❓</div>
+  <div class="icon" style="left: 25%; animation-delay: 2s;">💡</div>
+  <div class="icon" style="left: 45%; animation-delay: 4s;">📚</div>
+  <div class="icon" style="left: 65%; animation-delay: 6s;">🧠</div>
+  <div class="icon" style="left: 85%; animation-delay: 8s;">⚙️</div>
+</div>
+<div class="kahoot-background">
+    <div class="shape triangle"></div>
+    <div class="shape circle"></div>
+    <div class="shape rectangle"></div>
+  </div>
+  <header>
+    <nav class="navbar">
+      <div class="logo"><i class="fas fa-question-circle"></i> QUIZMANIA</div>
+
+      <ul class="nav-links">
+        <li><a href="Proposta.html">Proposta do Jogo</a></li>
+        <li><a href="integrantes.html">Integrantes</a></li>
+        <li><a href="index.php">Avaliações</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Cadastro de jogador -->
+  <div class="login-container">
+    <h1 class="welcome-text">QuizMania</h1>
+    <input type="text" id="player-name" placeholder="Digite seu nome" />
+    <select id="topic-select">
+      <option value="geral">Conhecimentos Gerais</option>
+      <option value="historia">História</option>
+      <option value="ciencia">Ciência</option>
+    </select>
+    <button onclick="startGame()">Começar Jogo</button>
+  </div>
+
+  <!-- Quiz -->
+  <div class="game-container" style="display: none;">
+<!-- dentro da div game-container -->
+<!-- Mascote PNG que substitui o botão de dica -->
+<div id="mascote-container">
+  <
+  <div id="hint-bubble"></div> <!-- Aqui vai o texto -->
+</div>
+<div class="progress-bar">
+  <div class="progress-fill" id="progress-fill"></div>
+</div>
+    <h2 id="player-display"></h2>
+    <p id="topic-display"></p>
+    <div id="question-container">
+      <p id="question"></p>
+    </div>
+    <div id="answers-container">
+      <button class="answer" onclick="checkAnswer(0)">Resposta 1</button>
+      <button class="answer" onclick="checkAnswer(1)">Resposta 2</button>
+      <button class="answer" onclick="checkAnswer(2)">Resposta 3</button>
+      <button class="answer" onclick="checkAnswer(3)">Resposta 4</button>
+    </div>
+    <p id="score">Pontuação: 0</p>
+    <p id="feedback"></p>
+  </div>
+
+  <!-- Resultado final -->
+  <div class="result-container" style="display: none;">
+    <p id="final-level"></p>
+<p id="medal-display"></p> <!-- Aqui a medalha será exibida -->
+    <h2>Parabéns, <span id="final-player-name"></span>!</h2>
+    <p>Sua pontuação final foi: <span id="final-score"></span></p>
+<ul id="ranking-list"></ul>
+    <button onclick="restartGame()">Jogar Novamente</button>
+
+<ul id="ranking-list"></ul>
+</div>
+<!-- Ranking -->
+<div class="ranking-container" style="display: none;">
+  <h2>🏆 Ranking dos Jogadores</h2>
+  <div id="ranking">
+  <h2>Ranking</h2>
+  <ul id="ranking-list"></ul>
+</div>
+  <ul id="ranking-list"></ul>
+  <button onclick="restartGame()">Voltar ao início</button>
+</div>
+<script src="jogo.js"></script>
+<script>
+let perguntaAtual = 0;
+const totalPerguntas = 5; // altere conforme seu quiz
+
+function updateProgressBar(atual, total) {
+  const barra = document.getElementById('progress-fill');
+  const percentual = (atual / total) * 100;
+  barra.style.width = percentual + '%';
+}
+
+function proximaPergunta() {
+  if (perguntaAtual < totalPerguntas) {
+    perguntaAtual++;
+    updateProgressBar(perguntaAtual, totalPerguntas);
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #628ecf;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+  }
+  
+  /* Fundo de fragmentos */
+  #fundo-fragmentos {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0;
+  }
+  
+  body > *:not(#fundo-fragmentos) {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Layout e animações */
+  .topo {
+    display: flex;
+    align-items: flex-start;
+    padding: 30px;
+    animation: fadeIn 1s ease forwards;
+  }
+  
+  .avatar {
+    max-width: 200px;
+    height: auto;
+    margin-right: 30px;
+  }
+  
+  .balão {
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 20px;
+    padding: 15px 20px;
+    max-width: 300px;
+    font-size: 1rem;
+    position: relative;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 2s ease forwards;
+  }
+  
+  .balão::after {
+    content: "";
+    position: absolute;
+    top: 30px;
+    left: -20px;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-right-color: #fff;
+    border-left: none;
+  }
+  
+  .descricao {
+    margin: 40px auto;
+    max-width: 600px;
+    background-color: #fff5e1;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    animation: fadeIn 3s ease forwards;
+  }
+  
+  .botao-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0 60px 0;
+    animation: fadeIn 4s ease forwards;
+  }
+  
+  .botao-voltar {
+    background-color: #e2b73f;
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .botao-voltar:hover {
+    background-color: #4fc3f7;
+  }
+  
+  /* Fragmentos e animações */
+  .fragmento {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #e2b73f;
+    opacity: 0.8;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: cair linear forwards;
+  }
+  
+  @keyframes cair {
+    0% {
+      transform: translateY(-10px);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

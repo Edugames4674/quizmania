@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz Interativo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2d9d6cdd3.js" crossorigin="anonymous"></script>
+  <style>
+    /* Reset e Fonte */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Rubik', sans-serif;
+      background: linear-gradient(135deg, #76c7ff, #ffffff);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      position: relative;
+      color: #333;
+    }
+
+    /* Bolhas decorativas */
+    .bubble {
+      position: absolute;
+      bottom: -50px;
+      background-color: rgba(0, 150, 255, 0.15);
+      border-radius: 50%;
+      animation: rise 20s infinite ease-in;
+      z-index: 0;
+    }
+    .bubble:nth-child(1) { width: 60px; height: 60px; left: 20%; animation-duration: 18s; }
+    .bubble:nth-child(2) { width: 100px; height: 100px; left: 50%; animation-duration: 22s; }
+    .bubble:nth-child(3) { width: 80px; height: 80px; left: 80%; animation-duration: 25s; }
+
+    @keyframes rise {
+      0% { transform: translateY(0) scale(1); opacity: 0.3; }
+      100% { transform: translateY(-110vh) scale(1.2); opacity: 0; }
+    }
+
+    /* Título com efeito digitado */
+    .typewriter {
+      font-size: 42px;
+      font-weight: 700;
+      color: #007acc;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #007acc;
+      width: fit-content;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    /* Conteúdo principal */
+    .center-content {
+      max-width: 800px;
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 12px;
+      z-index: 1;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .center-content h2 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .center-content p, .center-content ul {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li::before {
+      content: "🎯";
+      margin-right: 10px;
+    }
+
+    /* Botões */
+    button {
+      background-color: #ff9f43;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-size: 18px;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      background-color: #f39c12;
+    }
+
+    .top-buttons {
+      position: absolute;
+      top: 20px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .bottom-button {
+      margin-top: 30px;
+    }
+
+    /* Efeitos de animação */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .anim-btn.clicked {
+      animation: blink 0.3s ease;
+    }
+
+    @keyframes blink {
+      0% { background-color: #4fc3f7; }
+      50% { background-color: #0288d1; }
+      100% { background-color: #4fc3f7; }
+    }
+
+    /* Mascote (opcional) */
+    /* Mascote maior, fixo, centralizado verticalmente à esquerda */
+.mascote {
+  position: fixed;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  max-width: 100%;
+  animation: float 3s infinite ease-in-out;
+  z-index: 2;
+}
+
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @media (max-width: 768px) {
+      .typewriter { font-size: 28px; }
+      button { font-size: 16px; padding: 10px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botões Superiores -->
+  <div class="top-buttons fade-in">
+    <a href="Macote.html">
+      <button class="anim-btn"><i class="fas fa-paw"></i> Mascote</button>
+    </a>
+    <a href="https://salesianossp.org.br/">
+      <button class="anim-btn"><i class="fas fa-school"></i> Cedesp</button>
+    </a>
+  </div>
+
+  <!-- Título digitando -->
+  <h1 class="typewriter"></h1>
+
+  <!-- Conteúdo central -->
+  <div class="center-content fade-in">
+    <h2>👨‍💻 Criado com carinho pelos alunos de Programação!</h2>
+
+    <p>Esse quiz foi feito para:</p>
+    <ul>
+      <li>Estimular o raciocínio</li>
+      <li>Testar conhecimentos</li>
+      <li>Entreter você!</li>
+    </ul>
+
+    <p>🚀 Esperamos que se divirta e aprenda bastante!</p>
+    <p>🌟 Nos avalie na próxima página!</p>
+
+    <p>Quando estiver pronto, clique no botão abaixo. Boa sorte!</p>
+  </div>
+
+  <!-- Botão Iniciar -->
+  <div class="bottom-button fade-in">
+    <button class="anim-btn" onclick="window.location.href='jogo.html'"><i class="fas fa-play-circle"></i> Iniciar</button>
+  </div>
+
+  <!-- Mascote animado -->
+  <img src="mascote.png" alt="Mascote" class="mascote">
+
+  <!-- Bolhas -->
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+
+  <!-- JavaScript -->
+  <script>
+    // Animação ao clicar nos botões
+    document.querySelectorAll('.anim-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        button.classList.remove('clicked');
+        void button.offsetWidth;
+        button.classList.add('clicked');
+      });
+    });
+
+    // Texto com efeito de digitação
+    const titleText = "🎉 Bem-vindo ao Quiz!";
+    const titleElement = document.querySelector(".typewriter");
+    let i = 0;
+
+    function typeTitle() {
+      if (i < titleText.length) {
+        titleElement.textContent += titleText.charAt(i);
+        i++;
+        setTimeout(typeTitle, 100);
+      } else {
+        animateRest();
+      }
+    }
+
+    titleElement.textContent = "";
+    typeTitle();
+
+    // Mostrar o resto após digitar
+    function animateRest() {
+      document.querySelectorAll(".fade-in").forEach((el, index) => {
+        setTimeout(() => {
+          el.classList.add("visible");
+        }, index * 300);
+      });
+    }
+  </script>
+</body>
+</html>
